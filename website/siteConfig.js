@@ -21,7 +21,7 @@ const users = [
 ];
 
 const siteConfig = {
-  title: 'Guzzle Documentation', // Title for your website.
+  title: 'Guzzle', // Title for your website.
   tagline: 'Guzzle Documentation',
   url: 'https://pranavshukla-org.github.io', // Your website URL
   baseUrl: '/guzzle-documentation/', // Base URL for your project */
@@ -48,9 +48,9 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/favicon.ico',
-  footerIcon: 'img/favicon.ico',
-  favicon: 'img/favicon.ico',
+  headerIcon: 'img/just-analytics-logo-new.png',
+  footerIcon: 'img/favicon.webp',
+  favicon: 'img/favicon.webp',
 
   /* Colors for website */
   colors: {
@@ -73,7 +73,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  copyright: `Copyright © ${new Date().getFullYear()} Just Analytics`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.
