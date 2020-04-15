@@ -1,5 +1,5 @@
 ---
-id: doc1
+id: docshome
 title: What is Guzzle
 sidebar_label: Introduction to Guzzle
 ---

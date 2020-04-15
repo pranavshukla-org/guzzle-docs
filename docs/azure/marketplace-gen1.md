@@ -1,5 +1,5 @@
 ---
-id: azure_marketplace_gen1
+id: marketplace
 title: Guzzle on Azure Marketplace
 sidebar_label: Guzzle on Azure Marketplace
 ---
