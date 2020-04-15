@@ -1,8 +1,8 @@
 {
   "docs": {
-    "Guzzle Fundamentals": ["doc1"],
+    "Guzzle Fundamentals": ["docshome"],
     "Developers Guide": ["core/concepts"],
-    "Guzzle on Azure": ["azure/azure_marketplace_gen1"]
+    "Guzzle on Azure": ["azure/marketplace"]
   },
   "docs-other": {
     "First Category": ["doc4", "doc5"]
