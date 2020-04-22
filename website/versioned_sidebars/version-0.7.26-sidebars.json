@@ -1,12 +1,12 @@
 {
   "version-0.7.26-docs": {
     "Guzzle Fundamentals": [
-      "version-0.7.26-doc1"
+      "version-0.7.26-docshome"
     ],
     "Developers Guide": [
       "version-0.7.26-core/concepts"
     ],
-    "Guzzle on Azure": [
+    "Installing Guzzle": [
       "version-0.7.26-azure/marketplace"
     ]
   },

@@ -1,7 +1,7 @@
 ---
 id: marketplace
 title: Guzzle on Azure Marketplace
-sidebar_label: Guzzle on Azure Marketplace
+sidebar_label: Installing on Azure Marketplace
 ---
 
 
@@ -29,7 +29,7 @@ The list is also captured at: https://gitlab.ja.sg/guzzle/docs/-/wikis/Design/Az
 ## Must to know
 1. Don't have special character in the passwords - specially $ and | 
 2. Ensure Azure SQL server Database is firewall rules allows all Azure resources to connect to it (Azure SQL Server connections shall happen from Databricks and Guzzle VM)
-![image](uploads/5e0dd3b310b74abfa03554ec698f04fe/image.png)
+![image](/guzzle-docs/img/docs/azure/must_know.png)
 3. Guzzle Storage Account and Guzzle VM should be in same subscription (the setup script takes the VM's subscription and uses that to mount blob storage)
 4. Password for External metastore for databricks is stored as plain text in Guzzle configs. its recommended to switch to internal metastore once Guzzle marketplace offer is up and running
 
@@ -37,22 +37,22 @@ The list is also captured at: https://gitlab.ja.sg/guzzle/docs/-/wikis/Design/Az
 ## Deployment Steps
 
 ### Basic Info
-![image](uploads/d3a07b209a955d50bafb95319456c8a7/image.png)
+![image](/guzzle-docs/img/docs/azure/offer_wizard_1.png)
 
 ### VM Details and Managed Identity
-![image](uploads/8f02175133d001d0d02c1823ea5cd7a5/image.png)
+![image](/guzzle-docs/img/docs/azure/offer_wizard_2.png)
 
 ### Guzzle Settings
-![image](uploads/32106ee10cbe74d98b92920e5b719499/image.png)
+![image](/guzzle-docs/img/docs/azure/offer_wizard_3.png)
 
 ### Databricks Settings
-![image](uploads/05b4047c544a41fb3651c25d7dad69d2/image.png)
+![image](/guzzle-docs/img/docs/azure/offer_wizard_4.png)
 
 ### Review and Create
-![image](uploads/ec0a21021b3024e87a4dce08f6a25c60/image.png)
+![image](/guzzle-docs/img/docs/azure/offer_wizard_5.png)
 
 ### Upon completion of Deployment
-![image](uploads/4716e45f4c727e08ec51279672a02592/image.png)
+![image](/guzzle-docs/img/docs/azure/offer_wizard_6.png)
 
 
 ## What will you see when its deploying Marketplace offer
@@ -60,7 +60,7 @@ The list is also captured at: https://gitlab.ja.sg/guzzle/docs/-/wikis/Design/Az
 ### In Guzzle VM
 1. The deployment is progressing. The setup script can take upto 10 minutes as it copies 500MB+ of files over to blob store
 2. You see the setup script for python  running
-![image](uploads/a195dce4834df25f67b867c5190dfabd/image.png)
+![image](/guzzle-docs/img/docs/azure/running_processes.png)
 1. All the logs goes in this folder: /var/lib/waagent/custom-script/download/0/ in VM. stderr and stdout has all the key information
 ```shell
 demoadmin@guzzlemp2vm:~$ sudo bash
@@ -102,38 +102,38 @@ demoadm+   3029      1  1 04:11 ?        00:03:36 /usr/lib/jvm/java-8-openjdk-am
 
 ### In Databricks 
 1. In Databricks workspace you will see new analytics cluster called guzzle-config created (if there is existing one, that continues to remain - as cluster has unique id underneath and they don't go by name)
-![image](uploads/23184538762184b5671729e1dea65c66/image.png)
+![image](/guzzle-docs/img/docs/azure/databricks1.png)
 1. Also you would notice that Guzzle Home will have got mounted in Databricks workspace (mounts in Databricks are at workspace level and NOT at cluster level)
 On Databricks workspace you can create sample notebook and run it against guzzle-config or any anlaytics cluster) and ensure you see the Guzzle home mounted:
-![image](uploads/ab5b896fc14570317e0c498fe11c32ca/image.png)
+![image](/guzzle-docs/img/docs/azure/databricks2.png)
 
 ### In Storage Account
 1. In storage account you will see new files added up  in container which hosts Guzzle Home
-![image](uploads/3f1007a74baa20e3060f2e53756f6204/image.png)
+![image](/guzzle-docs/img/docs/azure/storage_account.png)
 
 
 ### In SQL Server databases
 1. The Guzzle repository and Guzzle API table should show up in Guzzle repository database. The below ones will show up first as Guzzle Repo gets initialized
-![image](uploads/98c9211e6db789764a0b7efe740e0640/image.png)
+![image](/guzzle-docs/img/docs/azure/in_db1.png)
 And below highlighted ones shows up when API comes up:
-![image](uploads/f5bbe762040d63013a641737966a6160/image.png)
+![image](/guzzle-docs/img/docs/azure/in_db2.png)
 1. Hive metastore tables should show up in External metastore 
 Before when there are no tables in this databaes
 After the job starts (steps to run the jobs before :
-![image](uploads/f2b04dc2b095f260782885f03a607114/image.png)
+![image](/guzzle-docs/img/docs/azure/in_db3.png)
 
 ## Once everything is set
 1. Launch the Guzzle URL
-![image](uploads/f36f0033cbfdcc1350b5dd9c9f902424/image.png)
+![image](/guzzle-docs/img/docs/azure/final_steps_1.png)
 1. And then login
-![image](uploads/88ec9107544c6fac33b77831fe3489c5/image.png)
+![image](/guzzle-docs/img/docs/azure/final_steps_2.png)
 1. Run the sample job from here
-![image](uploads/a1a7965c1968b7c8899426acf3d5937e/image.png)
+![image](/guzzle-docs/img/docs/azure/final_steps_3.png)
 1. This brings up Job Cluster. This also initializes hivemetastore as the first job runs using the external meastore 
-!![image](uploads/618549d45bf4e5c7e9f98cde10b7e234/image.png)
+![image](/guzzle-docs/img/docs/azure/final_steps_4.png)
 1. On successful completion the job should show up 
-![image](uploads/123435505606ccac3adc52d89e32be0a/image.png)
-![image](uploads/2129d81239fc7f12a7d8f382c57c1d74/image.png)
+![image](/guzzle-docs/img/docs/azure/final_steps_5.png)
+![image](/guzzle-docs/img/docs/azure/final_steps_6.png)
 
 
 ## What happens when we redo Marketplace deployment using same Azure resources multiple times
@@ -146,7 +146,7 @@ After the job starts (steps to run the jobs before :
 Following are the fixes of issues in Apache Atlas
 1. By default marketplace starts Atlas using the root. We need to modify Guzzle startup script to change this to non-root account. We can use the account used during the VM creation (demoadmin or appropriate user). Once this is chagnd, restart Guzzle VM
 
-![image](uploads/e297c3a9f0606975b14b054a5f5c162f/image.png)
+![image](/guzzle-docs/img/docs/azure/atlas1.png)
 
 ```shell
 sudo bash
@@ -157,7 +157,7 @@ vi /opt/guzzlescript/guzzle-startup-script.sh
  nohup sudo --preserve-env=PATH -HEu demoadmin bash -c  "/opt/apache-atlas-2.0.0/bin/atlas_start.py" > /guzzle/logs/atlas.out &
 
 ```
-![image](uploads/21fe1f01969534e029738399735dd9b5/image.png)
+![image](/guzzle-docs/img/docs/azure/atlas2.png)
 2. Edit the /guzzle/conf/atlas.yml file to remove the below entirely  
 ```yml
 hive:
@@ -165,7 +165,7 @@ hive:
 ```
 The revised file should look as per below:
 
-![image](uploads/423af0cd94f0929d72d7a085515bdb0e/image.png)
+![image](/guzzle-docs/img/docs/azure/atlas3.png)
 Restart the Guzzle VM from Azure Portal and wait for 10 minutes for all the services to come up
 
 3. Atlas sync only supported for Local file system
@@ -185,7 +185,7 @@ root@guzzlemp2vm:/dbfs/mnt/guzzle# ln -s /guzzle/test-data
 - In the job config use specific file names like users2.csv instead of user*.csv 
 5. Update the user and password for ph_hive (or appropriate hive or delta physical connection with username as "token" and password as API access token retrieved from Databricks workspace)
 
-![image](uploads/657bde12882da810b426c8363d64aefc/image.png)
+![image](/guzzle-docs/img/docs/azure/atlas4.png)
 6. Run the scrip to create Guzzle metadata type (this is only if when you don't see guzzle metatypes like guzzle_dataset , guzzle_process etc in Atlas)
 ```shell
 sudo bash
@@ -211,24 +211,106 @@ dbutils.fs.mount(
   mount_point = "/mnt/data",
   extra_configs = configs)
 ```
-1. Create a database "test" in Databricks and point to the /mnt/data/test as the location (do take note that folder test if not present then Databricks will  create when creating database) . With this all the tables in database "test" shall go into the folder /mnt/data/test in DBFS which in turn then goes into datalake1 container (aka filesystem) in the ADLSgen2 storage account: adlsv2guzzlecommon
+1. Verify the ADLS mount is working fine and you are able list the files. Do take not that dbfs mount is /mnt/data ,which implies the mount on Unix (or local file system representation) will be /dbfs/mnt/data
+1. Now, Create a database "test" in Databricks and point to the /mnt/data/test as the location (do take note that folder test if not present then Databricks will  create when creating database) . With this all the tables in database "test" shall go into the folder /mnt/data/test in DBFS which in turn then goes into datalake1 container (aka filesystem) in the ADLSgen2 storage account: adlsv2guzzlecommon. Also create sample table so and insert some data into it
 ```sql
+%sql
 create database test location '/mnt/data/test';
+use test;
+create table t1(i int);
+insert into t1 values(1);
 ```
-
-1. Go to Guzzle and define new logical and physical end point pointing to the hive database "test". You can create both Hive and Delta endpoints against the same database "test" and the tables will be stored as delta or hive tables based on which end point is used or target
+When going back to ADLS file explorer you should notice a new sub-folder test and child folder in it t1 will have been created confirming that table has got corrected created in the ADLS stroage
+![image](/guzzle-docs/img/docs/azure/adls_delta_storage.png)
+1. Go to Guzzle and define new logical and physical end point pointing to the this new database "test". You can create both Hive and Delta endpoints against the same database "test" and the tables will be stored as delta or hive tables based on which end point is used or target
 
 
 ## Securing Guzzle Deployment
 ### VM and SSO
 1. Enable azure SSO for Guzzle
-- Add your Azure AD account to as Admin
-- Delete the Native Admin account from Guzzle repository
-2. Enable Firewalls for Guzzle VM
+- Ensure redirect URL is put in Authentication tab in App Registration "https://<<hostname[.southeastasia.cloudapp.azure.com]>>:8082/oauth/microsoft"
+![image](/guzzle-docs/img/docs/azure/securing1.png)
+- Add your Azure AD account as admin role. Put the password which is complex or random as you will not need it. Make sure you are able to login through
+
+![image](/guzzle-docs/img/docs/azure/securing2.png)
+
+- Delete the Native Admin account from Guzzle repository. Login to SQL server and run below commands against guzzle Repoisotyr database
+```sql
+delete from user_authorities  where user_id = 1;
+delete from users where id = 1;
+```
+1. Enable Firewalls for Guzzle VM
 - Guzzle VM : Only open selected ports for external traffic : 9090,  8082, 21000 and 22)
-- You can also restrict outbound traffic from Guzzle VM to only connect to specific subnet where Databricks is running 
+![image](/guzzle-docs/img/docs/azure/securing3.png)
+- Outbound traffic will have following rules - internet access will be required (till private endpionts can be used for all the Azure pass services):
+![image](/guzzle-docs/img/docs/azure/securing4.png)
+1. Run Guzzle services from non root account and account which has no sudo access. Here is what is required  to use a new account "guzzle" to run all the Guzzle services. Do take note that original account used for VM creation is what should be used to login to the VM when required so that appropriate commands can be used to run using sudo permission :
+```shell
+sudo bash
+# Stop all the services
+kill -9 `ps aux | grep '[a]pi-0.0.1-SNAPSHOT.jar' | awk '{print $2}'`
+kill -9 `ps aux | grep '[e]lasticsearch-6.2.4' | awk '{print $2}'`
+kill -9 `ps aux | grep '[h]ttp-server' | awk '{print $2}'`
+kill -9 `ps aux | grep '[a]tlas' | awk '{print $2}'`
+# Verify no guzzle services are running except blobfuse using following
+ps -ef | grep "[g]uzzle\|[n]ode\|[e]lastic\|[a]tlas"
+
+# Create a new user guzzle. Provide relevant details prompted including a complex password for this account. 
+adduser guzzle
+
+# Change the ownership of /opt/apache-atlas-2.0.0 and /opt/elasticsearch-6.2.4 to guzzle:guzzle
+chown -R guzzle:guzzle /opt/apache-atlas-2.0.0
+chown -R guzzle:guzzle /opt/elasticsearch-6.2.4
+```
+- update the /opt/guzzlescript/guzzle-startup-script.sh to point all the service start using guzzle account. You can take the backup using the command "cp /opt/guzzlescript/guzzle-startup-script.sh /opt/guzzlescript/guzzle-startup-script.sh.ori"
+```shell
+echo "guzzle startup script execution started"
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export GUZZLE_HOME=/guzzle
+export PATH=/opt/guzzlescript/:/opt/elasticsearch-6.2.4/bin:/opt/node-v6.14.2-linux-x64/bin:/opt/spark-2.4.5-bin-hadoop2.7/bin:$PATH
+export MANAGE_LOCAL_HBASE=true
+export MANAGE_LOCAL_SOLR=true
+
+blobfuse /guzzle --tmp-path=/mnt/blobfusetmp -o allow_other --config-file=/root/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 --file-cache-timeout-in-seconds=10
+
+nohup sudo --preserve-env=PATH -HEu guzzle bash -c "/opt/elasticsearch-6.2.4/bin/elasticsearch" > /guzzle/logs/elasticsearch.out &
+
+cd /guzzle/api/
+nohup sudo --preserve-env=PATH -HEu guzzle bash -c "java -Dloader.path=/guzzle/api/libs -jar api-0.0.1-SNAPSHOT.jar" > /dev/null &
+
+cd /guzzle/web/
+nohup sudo --preserve-env=PATH -HEu guzzle bash -c "http-server -p 8082 --push-state --ssl --cert /certs/cert.pem --key /certs/privatekey_new.pem" . > /guzzle/logs/web.out &
+
+if [[ "yes" == "yes" ]]; then
+  nohup sudo --preserve-env=PATH -HEu guzzle bash -c "/opt/apache-atlas-2.0.0/bin/atlas_start.py" > /guzzle/logs/atlas.out &
+fi
+
+echo "guzzle startup script execution completed"
+```
+![image](/guzzle-docs/img/docs/azure/securing5.png)
+![image](/guzzle-docs/img/docs/azure/securing6.png)
+
+
+```shell
+sudo bash
+# Delete spring.log
+rm /tmp/spring.log
+# Start Guzzle service
+ /opt/guzzlescript/guzzle-startup-script.sh
+```
+1. Change the permission of the fuse config to 400
+```shell
+sudo bash
+cd /root/
+chmod 400 fuse_connection.cfg
+ls -ltrh
+```
+![image](/guzzle-docs/img/docs/azure/securing7.png)
+- Recommended to restart Guzzle VM which should restart all the services using newly created guzzle account
 3. Enable Network security for PAAS services - Azure SQL Server
 3. Enable Network security for PAAS services - Storage accounts (blob and ADLS if you are using that)
 
 ### Azure Databricks security
 1. Working with Databricks Secrets
+
