@@ -45,8 +45,31 @@ Publishing the current version of code in the `master` branch to the live docume
 
 * Execute the following command (assuming you have already set GIT_USER environment variable)
 
-cmd /C "set CURRENT_BRANCH=master && set USE_SSH=true && yarn run publish-gh-pages"
+`cmd /C "set CURRENT_BRANCH=master && set USE_SSH=true && yarn run publish-gh-pages"`
 
 The latest version of the website should be published within around a minute to the live website.
+
+
+## Documentation Versioning
+
+Documentation for different versions of Guzzle can be maintained.
+
+Mainly, there would be following versions of the documentation (and also of the underlying product - Guzzle).
+
+1. Next release where active development is in progress but not yet released
+    * maintained under docs/ sub folder
+2. Latest Stable Release
+    * Documents maintained under `website/versioned_docs/version-{release_number}` folder
+    * Sidebar for that version is maintained under `website/versioned_sidebars/version-{release_number}` folder
+3. Past releases
+    * Documents maintained under `website/versioned_docs/version-{release_number}` folder
+    * Sidebar for that version is maintained under `website/versioned_sidebars/version-{release_number}` folder
+    
+### Creating a new release of documentation
+
+* At the very beginning, when no stable releases of the documentation are done, there is only "next release" which is under development but not yet released. It is maintained under the 'docs' subfolder as mentioned earlier.
+* The publisher wants to cut a new release from the current unreleased version, he runs the command `yarn run version 1.0.0` from the `website` subfolder. This creates a new release called 1.0.0 and new versioned release folders are created at `website/versioned_docs/version-1.0.0` and `website/versioned_sidebars/version-1.0.0`. This newly cut release now becomes the latest release or the stable release.
+* At any point, contributor/publisher can edit any version's documents or sidebar configuration and publish the documentation using the normal process of publishing.
+
 
 
