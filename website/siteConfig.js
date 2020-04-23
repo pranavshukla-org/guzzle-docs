@@ -24,7 +24,7 @@ const siteConfig = {
   title: 'Guzzle', // Title for your website.
   tagline: 'Guzzle Documentation',
   url: 'https://pranavshukla-org.github.io', // Your website URL
-  baseUrl: '/guzzle-documentation/', // Base URL for your project */
+  baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
