@@ -47,6 +47,10 @@ Publishing the current version of code in the `master` branch to the live docume
 
 `cmd /C "set CURRENT_BRANCH=master && set USE_SSH=true && yarn run publish-gh-pages"`
 
+Linux users can publish using the following command
+
+`CURRENT_BRANCH=master USE_SSH=true yarn run publish-gh-pages`
+
 The latest version of the website should be published within around a minute to the live website.
 
 
