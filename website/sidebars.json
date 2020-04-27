@@ -2,7 +2,7 @@
   "docs": {
     "Guzzle Fundamentals": ["docshome"],
     "Developers Guide": ["core/concepts"],
-    "Installing Guzzle": ["azure/marketplace"]
+    "Installing Guzzle": ["azure/marketplace", "azure/azure_manual"]
   },
   "docs-other": {
     "First Category": ["doc4", "doc5"]
